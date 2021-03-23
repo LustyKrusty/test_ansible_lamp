@@ -1,0 +1,10 @@
+---
+- name:  install LAMP
+  hosts: all
+  
+  roles:
+    - { role: php_install, when: ansible_system == 'Linux'}
+    - { role: nginx_install, when: ansible_system == 'Linux'}
+    - { role: mysql_install, when: ansible_system == 'Linux'}
+
+...

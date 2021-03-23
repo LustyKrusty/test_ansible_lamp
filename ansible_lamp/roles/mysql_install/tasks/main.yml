@@ -1,0 +1,26 @@
+---
+# tasks file for mysql_install
+- name: For Debian
+  block:
+       - name: install mysql
+         apt:
+           state: latest
+           name:  mysql
+           update_cache: yes
+         tags:
+           - mysql_install
+           - mysql_deb
+  when:  (ansible_facts['os_family'] == "Debian")
+
+
+- name: For RedHat
+  block:
+      - name: install mysql
+        yum:
+          state: latest
+          name:  mysql
+          update_cache: yes
+        tags: 
+          - mysql_install
+          - mysql_rh 
+  when:  (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")

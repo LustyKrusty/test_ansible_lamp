@@ -1,0 +1,5 @@
+[standart]
+
+def_server           ansible_host=10.0.2.13    
+
+

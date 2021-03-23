@@ -1,0 +1,29 @@
+---
+# tasks file for php_install
+- name: For Debian
+  block:
+       - name: install PHP
+         apt:
+           state: latest
+           name:  php
+           update_cache: yes
+         tags:
+           - php_install
+           - php_deb
+  when:  (ansible_facts['os_family'] == "Debian")
+
+
+- name: For RedHat
+  block:
+      - name: install PHP
+        yum:
+          state: latest
+          name:  php
+          update_cache: yes
+        tags: 
+          - php_install
+          - php_rh 
+  when:  (ansible_facts['os_family'] == "RedHat")
+
+
+...
